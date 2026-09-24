@@ -1,59 +1,12 @@
 {{-- File: resources/views/categories/index.blade.php --}}
 
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Daftar Kategori</title>
+@section('title', 'Daftar Kategori')
 
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 40px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 16px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
-            text-align: left;
-        }
-
-        .success {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 10px 14px;
-            border-radius: 4px;
-            margin-top: 16px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 6px 14px;
-            background: #2563eb;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-    </style>
-</head>
-
-<body>
+@section('content')
 
     <h1>Daftar Kategori</h1>
-
-    @if (session('success'))
-        <div class="success">
-            {{ session('success') }}
-        </div>
-    @endif
 
     <p>
         <a href="{{ route('categories.create') }}" class="btn">
@@ -90,7 +43,7 @@
                         |
 
                         <form
-                            style="display: inline"
+                            class="inline"
                             action="{{ route('categories.destroy', $category['id']) }}"
                             method="POST"
                         >
@@ -127,6 +80,4 @@
         </em>
     </p>
 
-</body>
-
-</html>
+@endsection
