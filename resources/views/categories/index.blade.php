@@ -71,6 +71,8 @@
         </tbody>
 
     </table>
+   
+    {{ $categories->links() }}
 
     <p>
         <em>
