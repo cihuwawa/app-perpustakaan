@@ -102,6 +102,28 @@
             border-top: 1px solid #e5e7eb;
             margin-top: 40px;
         }
+        .badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.badge-dipinjam {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-dikembalikan {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-terlambat {
+    background: #fee2e2;
+    color: #991b1b;
+}
     </style>
 </head>
 

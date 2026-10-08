@@ -8,6 +8,12 @@
 
     <h1>Daftar Buku</h1>
 
+    @if (session('success'))
+        <div style="padding: 10px; margin-bottom: 15px; background: #dcfce7; color: #166534; border-radius: 5px;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <p>
         <a href="{{ route('books.create') }}" class="btn">
             + Tambah Buku
@@ -24,7 +30,7 @@
                 <th>Penerbit</th>
                 <th>Tahun</th>
                 <th>Stok</th>
-                <th>ID Kategori</th>
+                <th>Kategori</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -34,23 +40,26 @@
             @forelse ($books as $book)
 
                 <tr>
-                    <td>{{ $book['id'] }}</td>
-                    <td>{{ $book['judul'] }}</td>
-                    <td>{{ $book['penulis'] }}</td>
-                    <td>{{ $book['penerbit'] }}</td>
-                    <td>{{ $book['tahun_terbit'] }}</td>
-                    <td>{{ $book['stok'] }}</td>
-                    <td>{{ $book['category_id'] }}</td>
+                    <td>{{ $book->id }}</td>
+                    <td>{{ $book->judul }}</td>
+                    <td>{{ $book->penulis }}</td>
+                    <td>{{ $book->penerbit }}</td>
+                    <td>{{ $book->tahun_terbit }}</td>
+                    <td>{{ $book->stok }}</td>
+
+                    <td>
+                        {{ $book->category->nama_kategori }}
+                    </td>
 
                     <td>
 
-                        <a href="{{ route('books.show', $book['id']) }}">
+                        <a href="{{ route('books.show', $book->id) }}">
                             Detail
                         </a>
 
                         |
 
-                        <a href="{{ route('books.edit', $book['id']) }}">
+                        <a href="{{ route('books.edit', $book->id) }}">
                             Edit
                         </a>
 
@@ -58,7 +67,7 @@
 
                         <form
                             class="inline"
-                            action="{{ route('books.destroy', $book['id']) }}"
+                            action="{{ route('books.destroy', $book->id) }}"
                             method="POST"
                         >
                             @csrf
@@ -87,13 +96,5 @@
     </table>
 
     {{ $books->links() }}
-
-    <p>
-        <em>
-            Catatan: kolom kategori masih menampilkan ID.
-            Menampilkan nama kategori memerlukan Eloquent Relationship,
-            dipelajari di Pertemuan 7.
-        </em>
-    </p>
 
 @endsection

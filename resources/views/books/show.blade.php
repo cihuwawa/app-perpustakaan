@@ -1,40 +1,10 @@
 {{-- File: resources/views/books/show.blade.php --}}
 
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Detail Buku</title>
+@section('title', 'Detail Buku')
 
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 40px;
-            max-width: 500px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 16px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
-            text-align: left;
-        }
-
-        th {
-            width: 160px;
-            background: #f3f4f6;
-        }
-    </style>
-</head>
-
-<body>
+@section('content')
 
     <h1>Detail Buku</h1>
 
@@ -48,41 +18,45 @@
 
         <tr>
             <th>Judul</th>
-            <td>{{ $book['judul'] }}</td>
+            <td>{{ $book->judul }}</td>
         </tr>
 
         <tr>
             <th>Penulis</th>
-            <td>{{ $book['penulis'] }}</td>
+            <td>{{ $book->penulis }}</td>
         </tr>
 
         <tr>
             <th>Penerbit</th>
-            <td>{{ $book['penerbit'] }}</td>
+            <td>{{ $book->penerbit }}</td>
         </tr>
 
         <tr>
             <th>Tahun Terbit</th>
-            <td>{{ $book['tahun_terbit'] }}</td>
+            <td>{{ $book->tahun_terbit }}</td>
         </tr>
 
         <tr>
             <th>ISBN</th>
-            <td>{{ $book['isbn'] ?? '-' }}</td>
+            <td>{{ $book->isbn ?? '-' }}</td>
         </tr>
 
         <tr>
             <th>Stok</th>
-            <td>{{ $book['stok'] }}</td>
+            <td>{{ $book->stok }}</td>
         </tr>
 
         <tr>
             <th>Kategori</th>
-            <td>{{ $book['kategori'] }}</td>
+            <td>{{ $book->category->nama_kategori }}</td>
         </tr>
 
     </table>
 
-</body>
+    <p style="margin-top: 20px;">
+        <a href="{{ route('books.edit', $book->id) }}" class="btn">
+            Edit Buku
+        </a>
+    </p>
 
-</html>
+@endsection
