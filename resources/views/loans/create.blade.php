@@ -46,20 +46,11 @@
         </p>
 
         <p>
-            <label for="user_id">Petugas</label><br>
-
-            <select name="user_id" id="user_id" required>
-                <option value="">-- Pilih Petugas --</option>
-
-                @foreach ($users as $user)
-                    <option
-                        value="{{ $user->id }}"
-                        {{ old('user_id') == $user->id ? 'selected' : '' }}
-                    >
-                        {{ $user->name }}
-                    </option>
-                @endforeach
-            </select>
+           <em>
+                Petugas pencatat:
+                <strong>{{ auth()->user()->name }}</strong>
+                (otomatis dari akun yang login).
+            </em>
         </p>
 
         <p>
